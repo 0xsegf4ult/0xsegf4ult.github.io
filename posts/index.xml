@@ -9,17 +9,37 @@
     <description>Recent content in Posts on segf4ult</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 12 Sep 2022 07:10:15 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 12 Sep 2022 07:38:46 +0530</lastBuildDate>
     
 	<atom:link href="https://0xsegf4ult.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Post1</title>
-      <link>https://0xsegf4ult.github.io/posts/post1/</link>
+      <title>TryHackMe WriteUp: Sea-Surfer</title>
+      <link>https://0xsegf4ult.github.io/posts/p2-thm-sea_surfer/</link>
+      <pubDate>Mon, 12 Sep 2022 07:38:46 +0530</pubDate>
+      
+      <guid>https://0xsegf4ult.github.io/posts/p2-thm-sea_surfer/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>TryHackMe WriteUp: Recovery</title>
+      <link>https://0xsegf4ult.github.io/posts/p1-thm-recovery/</link>
       <pubDate>Mon, 12 Sep 2022 07:10:15 +0530</pubDate>
       
-      <guid>https://0xsegf4ult.github.io/posts/post1/</guid>
+      <guid>https://0xsegf4ult.github.io/posts/p1-thm-recovery/</guid>
       <description>
         
           
