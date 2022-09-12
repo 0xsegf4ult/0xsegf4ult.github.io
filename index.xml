@@ -9,7 +9,7 @@
     <description>Recent content on segf4ult</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 12 Sep 2022 05:05:15 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 12 Sep 2022 07:10:15 +0530</lastBuildDate>
     
 	<atom:link href="https://0xsegf4ult.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -17,7 +17,7 @@
     <item>
       <title>Post1</title>
       <link>https://0xsegf4ult.github.io/posts/post1/</link>
-      <pubDate>Mon, 12 Sep 2022 05:05:15 +0530</pubDate>
+      <pubDate>Mon, 12 Sep 2022 07:10:15 +0530</pubDate>
       
       <guid>https://0xsegf4ult.github.io/posts/post1/</guid>
       <description>
@@ -28,7 +28,7 @@
         
         
         
-           This is my First blog # import sys import os print &amp;#34;Hey there !&amp;#34; 
+           This is my first post :) # import os,sys import binascii pritnt &amp;#34;Hi there&amp;#34; 
           
         
         </description>
