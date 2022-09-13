@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>
+        TryHackMe WriteUp: Recovery ::
+        segf4ult — security stuff
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="TryHackMe WriteUp: Recovery # Hey there, Now a days i was solving THM and HTB machines and thought lets write how i solved and where i failed and what i learned, i wil be writing on machines who i think i learned something new and different from others
+This time i am writing on Recovery machine , this is medium level room if you haven&amp;rsquo;t try it yet i will not force you but hey you should try first and if you are here just because you tried it and got stuck then just solve it together :) ya muchh talking :D"
+/>
+<meta
+  name="keywords"
+  content=""
+/>
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://0xsegf4ult.github.io/posts/post1/thm-recovery/" />
+
+
+
+
+
+<link rel="stylesheet" href="https://0xsegf4ult.github.io/assets/style.css" />
+
+<link rel="stylesheet" href="https://0xsegf4ult.github.io/style.css" />
+
+
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="https://0xsegf4ult.github.io/img/apple-touch-icon-144-precomposed.png"
+/>
+<link rel="shortcut icon" href="https://0xsegf4ult.github.io/img/favicon.png" />
+
+
+<link href="https://0xsegf4ult.github.io/assets/fonts/Inter-Italic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://0xsegf4ult.github.io/assets/fonts/Inter-Regular.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://0xsegf4ult.github.io/assets/fonts/Inter-Medium.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://0xsegf4ult.github.io/assets/fonts/Inter-MediumItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://0xsegf4ult.github.io/assets/fonts/Inter-Bold.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://0xsegf4ult.github.io/assets/fonts/Inter-BoldItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="TryHackMe WriteUp: Recovery"/>
+<meta name="twitter:description" content="TryHackMe WriteUp: Recovery # Hey there, Now a days i was solving THM and HTB machines and thought lets write how i solved and where i failed and what i learned, i wil be writing on machines who i think i learned something new and different from others
+This time i am writing on Recovery machine , this is medium level room if you haven&rsquo;t try it yet i will not force you but hey you should try first and if you are here just because you tried it and got stuck then just solve it together :) ya muchh talking :D"/>
+
+
+
+<meta property="og:title" content="TryHackMe WriteUp: Recovery" />
+<meta property="og:description" content="TryHackMe WriteUp: Recovery # Hey there, Now a days i was solving THM and HTB machines and thought lets write how i solved and where i failed and what i learned, i wil be writing on machines who i think i learned something new and different from others
+This time i am writing on Recovery machine , this is medium level room if you haven&rsquo;t try it yet i will not force you but hey you should try first and if you are here just because you tried it and got stuck then just solve it together :) ya muchh talking :D" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://0xsegf4ult.github.io/posts/post1/thm-recovery/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-09-12T07:10:15+05:30" />
+<meta property="article:modified_time" content="2022-09-12T07:10:15+05:30" /><meta property="og:site_name" content="segf4ult" />
+
+
+
+
+
+
+
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >0xsegf4ult</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="/category">Category</a></li>
+        
+      
+        
+          <li><a href="/gihub">Github</a></li>
+        
+      
+      
+        <ul class="menu__sub-inner">
+          <li class="menu__sub-inner-more-trigger">
+            Show more
+            <span class="menu__sub-inner-more-trigger-icon"
+              ><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span
+            >
+          </li>
+          <ul class="menu__sub-inner-more hidden">
+            
+              
+                <li><a href="/">Home</a></li>
+              
+            
+              
+                <li><a href="/notes">Notes</a></li>
+              
+            
+          </ul>
+        </ul>
+      
+      
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+      
+        <li><a href="/category">Category</a></li>
+      
+    
+      
+        <li><a href="/gihub">Github</a></li>
+      
+    
+      
+        <li><a href="/">Home</a></li>
+      
+    
+      
+        <li><a href="/notes">Notes</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h1 class="post-title">TryHackMe WriteUp: Recovery</h1>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2022-09-12
+        </span>
+
+        
+          
+        
+      
+
+      
+
+
+      
+    </div>
+
+    
+
+    
+
+    <div class="post-content">
+      
+      <h1 id="tryhackme-writeup-recovery">
+  TryHackMe WriteUp: Recovery
+  <a href="#tryhackme-writeup-recovery" class="h-anchor" aria-hidden="true">#</a>
+</h1>
+<p>Hey there, Now  a days i was solving THM and HTB machines and thought  lets write
+how i solved and where i failed and what i learned, i wil be writing on machines who i think i learned something new and different from others</p>
+<p>This time i am writing on Recovery machine , this is medium  level room if you haven&rsquo;t try it yet i will not force you  but hey you should try first and if you are here just because you tried it and got stuck then just solve it together :) ya muchh talking :D</p>
+<p><img src="machine-logo.png" alt="alt text"></p>
+<blockquote>
+<p>Note: Read the msg by alex from challenge description what exactly he is saying it will help you to recovery his system as he is the one who know better what exactly happend to him  .</p>
+</blockquote>
+<p>So as always first search for open ports and services running on this machine with nmap</p>
+<p><img src="imgs/nmap.png" alt="nmap result"></p>
+<p>and look at here ohmydash what i got :0 http and ssh are running simultaniously
+that i already knew it as we have been told we can check our flags at http://$machine_ip:1337 and ssh login credentials to login in to alex&rsquo;s system is</p>
+<p><code>username: alex </code>password: madeline</p>
+<p>After ssh ing a message was printing in a loop</p>
+<p><img src="imgs/msg.png" alt="crazy msg"></p>
+<h2 id="hunting-flag0">
+  Hunting Flag0
+  <a href="#hunting-flag0" class="h-anchor" aria-hidden="true">#</a>
+</h2>
+<h3 id="aproach-1-to-get-first-flag">
+  Aproach #1 to get first flag
+  <a href="#aproach-1-to-get-first-flag" class="h-anchor" aria-hidden="true">#</a>
+</h3>
+<p>Look like there is some script progrmmed or job shedule which run after booting the system  which is possilbe through .bashrc file or crontab  i looked for  .bashrc file and there was line written at the end of the file for looping that message</p>
+<p><img src="imgs/bashrcfile.png" alt="bashrc"></p>
+<blockquote>
+<p>?: how did i stop that msg while loop :  justing by hitting 5-10 times Enter and Ctrl^c :D thats how it worked for me give a try it&rsquo;s fun :P .  actually i figurd it out later reading someone writeup i could just simply copy the my local machine .bashrc file with alex.</p>
+</blockquote>
+<p>after deleting the the line i got my first flag (you can che)</p>
+<p><img src="imgs/flag0.png" alt="first flag"></p>
+<h3 id="aproach-2-to-get-first-flag">
+  Aproach #2 to get first flag
+  <a href="#aproach-2-to-get-first-flag" class="h-anchor" aria-hidden="true">#</a>
+</h3>
+<p>In home dir there was binary file <strong>fixutil</strong> and this is the file alex was talking about for better convenient i copied on my local system with <strong>scp</strong> utility .</p>
+<blockquote>
+<p>run on local system</p>
+</blockquote>
+<pre tabindex="0"><code class="language-command" data-lang="command">alex@$IP:/home/alex/fixutil local/dir/
+</code></pre><p>i looked for strings in binary to get idea about what this binary up to through <strong>strings</strong> utility i had an idea  what&rsquo;s going on</p>
+<p><img src="imgs/strings.png" alt="stirngs"></p>
+<p>let&rsquo;s open this binary in ghidra and decompile it into pseudocode and look into main() function &lsquo;cause it&rsquo;s main function</p>
+<p><img src="imgs/fixutil.png" alt="fixutil"></p>
+<p>pretty clean huh? , yeah in above image we can see that there is FILE variable <strong>pFvar1</strong> which containing the <strong>.bashrc</strong> file and writing some shell script into that var(.bashrc file) and &lsquo;cause it&rsquo;s .bashrc file we know that <strong>bashrc file is a script file that&rsquo;s executed when a user logs in</strong> this ended up with looping message when i loggin into the system.
+remove it from the file and this way i get the first flag .</p>
+<h2 id="hunting-flag1">
+  Hunting Flag1
+  <a href="#hunting-flag1" class="h-anchor" aria-hidden="true">#</a>
+</h2>
+<p>meanwhile i faced issue that my loggin session is disconnecting automatially firstly thought that it was from my side but then remeber fix the fixutil strings i have seen earlier that there is job sheduled in crontab look at this image below .</p>
+<p><img src="imgs/cronstring.png" alt="crontab"></p>
+<p>/opt/ dir listing</p>
+<p><img src="imgs/opt_dir.png" alt="opt dir"></p>
+<p>there is one dir <strong>.fixutil</strong> which has permission and as i am local user for now can&rsquo;t access this dir and  a script <strong>brilliant_script.sh</strong> in <strong>/opt/</strong> directory wich is sheduled to run every minute
+what we can figure out from this script that there <strong>for loop</strong> running on to get the process of bash shell using grep command and taking it&rsquo;s PID to KILL with <strong>kill</strong> command so just overwrite it and now no more session breakation issue :D .</p>
+<p>but wait a minute did you  notice the file is a <strong>.sh</strong> file and with job sheduled in crontab as a root user it means i can get escalate our priviledge from alex to root</p>
+<p>here i use bash as python wasn&rsquo;t there for reverse shell you can use <a href="https://www.revshells.com/">revshell</a>
+for all type of reverse shell so writing bash revshell into brilliant_script.sh file</p>
+<p><img src="imgs/revshell.png" alt="revshell"></p>
+<p>and</p>
+<p><img src="imgs/eternity.jpg" alt="meme"></p>
+<p>I AM GROOT! .</p>
+<p><img src="rootshell.png" alt="rootshell"></p>
+<p>and captured the secod flag too.</p>
+<p><img src="imgs/flag1.png" alt="flag2"></p>
+<p>lets see the whats inside that <strong>.fixutil</strong> directory</p>
+<p><img src="imgs/backuptxt.png" alt="bakcup"></p>
+<p>hmm, some gibberish strings whas the use of this strings for that time i left as is as i didn&rsquo;t have idea what to do with this file .</p>
+<blockquote>
+<p>Note: actually this room has total 6 flag and in my case while solving this room i captured the flags non sequentially and i am going to write as is , as  it will make more sense like a puzzle you get a random hint and trying to find flag relating to that hint at the last what it call CTF.</p>
+</blockquote>
+<h2 id="hunting-flag3">
+  Hunting Flag3
+  <a href="#hunting-flag3" class="h-anchor" aria-hidden="true">#</a>
+</h2>
+<p>0kay, until now i have 2 flags and 4 remaining.
+retrace the path and see what footprint i have (actually there is lot assuming just by the result of that fixutil binary strings resutl) .
+hmm , fixutil reminded me that there was something too</p>
+<p><img src="imgs/fixutil2.png" alt="fixutil2"></p>
+<p>at 10th line there is system() function copying the <strong>liblogging.so</strong> file from /lib/x86_64-linux-gnu/ to /tmp/ dir and fwrite() function writing that file and lastly there is another system() func echoing string &lsquo;pwned&rsquo; and passing to a file through pipe</p>
+<p>here i have two file to look up</p>
+<ol>
+<li>liblogging.so</li>
+<li>admin</li>
+</ol>
+<p>copying the liblogging.so file to local directory using scp utility like i did for previous file and decomping it using ghidra lets see what i get
+there are 2 interesting function</p>
+<p>1 logIncorrectAttempt
+2 XorEncryptWebFile
+-  XORFile</p>
+<ol>
+<li>logIncorrectAttempt</li>
+</ol>
+<p><img src="imgs/logincorrectattempt.png" alt="liblogging"></p>
+<p>First Arrow :  moving the /tmp/logging.so fie to /lib/x86_64-linux-gnu/ as oldliblogging.so this is the previous file we have copied from /lib/x86_64-linux-gnu/liblogging to /tmp/ as a logging.so</p>
+<p>Second Arrow : opening the authorized_keys file from /root/.ssh/ dir as writable permission and storing in pFVar2 var</p>
+<p>Curly Braces : writing public key to that pFVar2 var</p>
+<p>Third Arrow and square bracket : adding a new use &lsquo;secuirty&rsquo; with passwd</p>
+<p>Last two arrow : we have figured it out already</p>
+<p>0kay , so  jumping to the Second Arrow as in first i had to go through that file
+just opening the authorized_keys file and writing the public key look like attacker made it to escalate priviledge and as i have to recover the system i overwrited the  authorized_keys file with empty data/deleted the public key from inside the file or can delete directly  and captured the flag3</p>
+<p><img src="imgs/flag3.png" alt="flag3"></p>
+<h2 id="hunting-flag4">
+  Hunting Flag4
+  <a href="#hunting-flag4" class="h-anchor" aria-hidden="true">#</a>
+</h2>
+<p>Move to Third Arrow and square bracket attacker adding new user &lsquo;security&rsquo; and pasword as well, removing this user from system using <strong>userdel</strong> command or can do it manually (removing entries from /etc/passwd and /etc/shadow)
+and doing this  i got my flag4</p>
+<p><img src="imgs/flag4.png" alt="flag4"></p>
+<p>Left with last two flag i.e flag2 and flag5</p>
+<h2 id="hunting-flag2">
+  Hunting Flag2
+  <a href="#hunting-flag2" class="h-anchor" aria-hidden="true">#</a>
+</h2>
+<p>First Arrow :  moving the /tmp/logging.so fie to /lib/x86_64-linux-gnu/ as oldliblogging.so this is the previous file we have copied from /lib/x86_64-linux-gnu/liblogging to /tmp/ as a logging.so let just undo it to its realname .</p>
+<p>`cd /lib/x86_64-linux-gnu/ &amp;&amp; mv /lib/x86_64-linux-gnu/oldliblogging liblogging.so</p>
+<p>and doing this  i got my flag2</p>
+<p><img src="imgs/flag2.png" alt=""></p>
+<h2 id="hunting-flag5">
+  Hunting Flag5
+  <a href="#hunting-flag5" class="h-anchor" aria-hidden="true">#</a>
+</h2>
+<ol start="2">
+<li>XorEncryptWebFile</li>
+</ol>
+<p><img src="imgs/xorexplaining.png" alt="xorencwebfile"></p>
+<p>After reviewing the ghidra gernerated pseudo code what i get to know that this function this function generating the encryption key and storing that key into dir /opt/.fixutil/ as backup.txt and if dir doesn&rsquo;t exist creating the new one and as i have already had cup of tea with this text file it does contain encryption key</p>
+<p>curly braces 2: function &lsquo;GetWebFiles&rsquo; taking the all file from /usr/local/apache2/htdocs/</p>
+<p><img src="imgs/weblocation.png" alt="getwebfiles"></p>
+<p>one by one and encrypting it with the xoring with encryption key</p>
+<p><img src="imgs/xoring.png" alt="xoring"></p>
+<p>so i copied all all encrypted file from /usr/local/apache2/htdocs/ to alex home dir as i require root permission and from then copied to my local machine using <strong>scp</strong> command
+and decrypted all files with encryption key by reversing the encryption process using this python script</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env python </span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> itertools <span style="color:#f92672">import</span> cycle
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>key <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;AdsipPewFlfkmll&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#fname = &#34;index.&#34;</span>
+</span></span><span style="display:flex;"><span>data  <span style="color:#f92672">=</span> open(<span style="color:#e6db74">&#34;./htdoc/reallyimportant.txt&#34;</span>, <span style="color:#e6db74">&#34;rb&#34;</span>)<span style="color:#f92672">.</span>read()
+</span></span><span style="display:flex;"><span>xor <span style="color:#f92672">=</span> [chr(ord(a) <span style="color:#f92672">^</span> ord(b)) <span style="color:#66d9ef">for</span> a,b <span style="color:#f92672">in</span> zip(data, cycle(key))]
+</span></span><span style="display:flex;"><span>content <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join(map(str, xor))
+</span></span><span style="display:flex;"><span>print content
+</span></span><span style="display:flex;"><span>wome <span style="color:#f92672">=</span> open(<span style="color:#e6db74">&#34;./decrypted/reallyimportant.txt&#34;</span>, <span style="color:#e6db74">&#34;w&#34;</span>) 
+</span></span><span style="display:flex;"><span>wome<span style="color:#f92672">.</span>write(content) 
+</span></span></code></pre></div><p>after decrypting the each file with same key</p>
+<p><img src="imgs/decryptedmsg.png" alt="exp result"></p>
+<p>as i have been undoing the all changes made by attacker i had to replace all files with decrypted one so.
+i copied all files back to its dir and as it require root permission and althogh we have root shell but pass so copied to into alex home dir and then its residential dir from root shell
+and i got my last flag with last enter .</p>
+<p><img src="imgs/flag5.png" alt="flag5"></p>
+<ol start="2">
+<li>admin</li>
+</ol>
+<p><img src="imgs/adminbin.png" alt="adminbin"></p>
+<p>still left with this binary  and nothing usefull, decompiling with ghidra we can see there is passphrase hardcoded using that we end up with msg &ldquo;This section is currently under development, sorry&rdquo; i was just rabbit hole .</p>
+<h2 id="summary">
+  Summary
+  <a href="#summary" class="h-anchor" aria-hidden="true">#</a>
+</h2>
+<p>Overall challenges in this room was quite good author designed room as real case scenerio compare to all othere room i have played so far as metioned not convetional CTF recovery all compromised system tracking all footprint left by attacker via reversing , analysing malware.</p>
+
+    </div>
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            <span class="pagination__title-h"
+              >Read other posts</span
+            >
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+              <span class="button previous">
+                <a href="https://0xsegf4ult.github.io/posts/p1-thm-recovery/">
+                  <span class="button__icon">←</span>
+                  <span class="button__text">TryHackMe WriteUp: Recovery</span>
+                </a>
+              </span>
+            
+            
+          </div>
+        </div>
+      
+    
+
+    
+      
+        
+
+      
+    
+  </div>
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >0xsegf4ult</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+      <div class="copyright">
+        <span
+          >© 2022 Powered by
+          <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
+        >
+        <span
+          >Theme created by
+          <a href="https://twitter.com/panr" target="_blank" rel="noopener">panr</a></span
+        >
+      </div>
+    
+  </div>
+</footer>
+
+<script src="https://0xsegf4ult.github.io/assets/main.js"></script>
+<script src="https://0xsegf4ult.github.io/assets/prism.js"></script>
+
+
+      
+    </div>
+
+    
+  </body>
+</html>

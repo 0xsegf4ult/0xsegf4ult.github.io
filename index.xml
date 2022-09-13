@@ -9,90 +9,10 @@
     <description>Recent content on segf4ult</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 12 Sep 2022 07:50:35 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 12 Sep 2022 07:10:15 +0530</lastBuildDate>
     
 	<atom:link href="https://0xsegf4ult.github.io/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>TryHackMe WriteUp: Ninjaskill</title>
-      <link>https://0xsegf4ult.github.io/posts/p5-thm-ninjaskill/</link>
-      <pubDate>Mon, 12 Sep 2022 07:50:35 +0530</pubDate>
-      
-      <guid>https://0xsegf4ult.github.io/posts/p5-thm-ninjaskill/</guid>
-      <description>
-        
-          
-          
-          
-        
-        
-        
-          
-          
-        
-        </description>
-    </item>
-    
-    <item>
-      <title>TryHackMe Writeup: ConvertMyVideo</title>
-      <link>https://0xsegf4ult.github.io/posts/p4-thm-convertmyvideo/</link>
-      <pubDate>Mon, 12 Sep 2022 07:50:02 +0530</pubDate>
-      
-      <guid>https://0xsegf4ult.github.io/posts/p4-thm-convertmyvideo/</guid>
-      <description>
-        
-          
-          
-          
-        
-        
-        
-          
-          
-        
-        </description>
-    </item>
-    
-    <item>
-      <title>TryHackMe WriteUp: Loogking Glass</title>
-      <link>https://0xsegf4ult.github.io/posts/p3-thm-looking_glass/</link>
-      <pubDate>Mon, 12 Sep 2022 07:45:57 +0530</pubDate>
-      
-      <guid>https://0xsegf4ult.github.io/posts/p3-thm-looking_glass/</guid>
-      <description>
-        
-          
-          
-          
-        
-        
-        
-          
-          
-        
-        </description>
-    </item>
-    
-    <item>
-      <title>TryHackMe WriteUp: Sea-Surfer</title>
-      <link>https://0xsegf4ult.github.io/posts/p2-thm-sea_surfer/</link>
-      <pubDate>Mon, 12 Sep 2022 07:38:46 +0530</pubDate>
-      
-      <guid>https://0xsegf4ult.github.io/posts/p2-thm-sea_surfer/</guid>
-      <description>
-        
-          
-          
-          
-        
-        
-        
-          
-          
-        
-        </description>
-    </item>
     
     <item>
       <title>Category</title>
@@ -149,6 +69,27 @@
         
         
            This is my first post :) # import os,sys import binascii pritnt &amp;#34;Hi there&amp;#34; 
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>TryHackMe WriteUp: Recovery</title>
+      <link>https://0xsegf4ult.github.io/posts/post1/thm-recovery/</link>
+      <pubDate>Mon, 12 Sep 2022 07:10:15 +0530</pubDate>
+      
+      <guid>https://0xsegf4ult.github.io/posts/post1/thm-recovery/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          TryHackMe WriteUp: Recovery # Hey there, Now a days i was solving THM and HTB machines and thought lets write how i solved and where i failed and what i learned, i wil be writing on machines who i think i learned something new and different from others
+This time i am writing on Recovery machine , this is medium level room if you haven&amp;rsquo;t try it yet i will not force you but hey you should try first and if you are here just because you tried it and got stuck then just solve it together :) ya muchh talking :D
           
         
         </description>
